@@ -1,0 +1,7 @@
+<h2><%= @daily_standup.name %></h2>
+
+<p><b>User:</b> <%= @daily_standup.user.name %></p>
+<p><b>Date:</b> <%= @daily_standup.start_at.to_date %></p>
+<p><b>Start:</b> <%= @daily_standup.start_at.strftime('%H:%M') %></p>
+<p><b>End:</b> <%= @daily_standup.end_at.strftime('%H:%M') %></p>
+<p><b>Meeting Time:</b> <%= @daily_standup.meeting_time %></p>

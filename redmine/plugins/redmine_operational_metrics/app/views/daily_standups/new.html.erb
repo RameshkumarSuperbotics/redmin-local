@@ -1,0 +1,22 @@
+<h2>Daily Meeting</h2>
+
+<%= form_with model: @daily_standup, local: true do |f| %>
+
+  <p>
+    <%= f.label :name, "Meeting Name" %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :start_at, "Start Date & Time" %><br>
+    <%= f.datetime_local_field :start_at %>
+  </p>
+
+  <p>
+    <%= f.label :end_at, "End Date & Time" %><br>
+    <%= f.datetime_local_field :end_at %>
+  </p>
+
+  <%= f.submit "Save" %>
+
+<% end %>
