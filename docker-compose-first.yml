@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: redmine-db
+    restart: always
+    ports:
+      - "3307:3306" 
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: redmine
+      MYSQL_USER: redmine
+      MYSQL_PASSWORD: redmine
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+
+  redmine:
+    image: redmine:latest
+    container_name: redmine
+    restart: always
+    ports:
+      - "8085:3000"   # 🔹 CUSTOM PORT (change 8085 if needed)
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_DATABASE: redmine
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: redmine
+    depends_on:
+      - db
+    volumes:
+      - redmine_files:/usr/src/redmine/files
+
+volumes:
+  db_data:
+  redmine_files:
