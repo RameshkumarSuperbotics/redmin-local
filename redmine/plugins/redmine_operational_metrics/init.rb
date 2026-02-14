@@ -8,4 +8,8 @@ Redmine::Plugin.register :redmine_operational_metrics do
 
   menu :top_menu, :operational_metrics, { :controller => 'operational_metrics', :action => 'index' }, :caption => 'Operational Metrics'
   menu :top_menu, :tactical_meetings, { :controller => 'tactical_meetings', :action => 'index' }, :caption => 'Tactical Meetings'
+  menu :top_menu, :daily_standups,
+     { controller: 'daily_standups', action: 'index' },
+     caption: 'Daily Meetings'
+
 end
