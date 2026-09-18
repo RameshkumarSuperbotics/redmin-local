@@ -14,7 +14,9 @@ services:
       - ./data/mysql:/var/lib/mysql
 
   redmine:
-    image: redmine:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.redmine
     container_name: redmine
     restart: always
     ports:
@@ -29,3 +31,7 @@ services:
     volumes:
       - ./redmine:/usr/src/redmine
       - ./data/files:/usr/src/redmine/files
+      - redmine_bundle:/usr/local/bundle
+
+volumes:
+  redmine_bundle:

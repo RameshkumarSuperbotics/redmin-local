@@ -1,0 +1,7 @@
+FROM redmine:6.1
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential libyaml-dev pkg-config && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN gem uninstall rake -v 13.4.2 --ignore-dependencies || true
