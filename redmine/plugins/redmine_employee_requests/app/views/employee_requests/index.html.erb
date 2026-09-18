@@ -1,0 +1,17 @@
+<h2>Employee Requests</h2>
+<p>Tap a request type to open its dedicated form.</p>
+
+<ul class="employee-request-links">
+  <% @request_types.each do |type| %>
+    <li>
+      <%= link_to EmployeeRequest::REQUEST_TYPE_LABELS[type], new_employee_request_path(type: type) %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to 'My Requests', mine_employee_requests_path %>
+  <% if approver?(User.current) %>
+    | <%= link_to 'Pending Approvals', approvals_employee_requests_path %>
+  <% end %>
+</p>

@@ -1,0 +1,20 @@
+<h2><%= @employee_request.label %></h2>
+
+<p><strong>Requested by:</strong> <%= @employee_request.user %></p>
+<p><strong>Status:</strong> <%= @employee_request.status %></p>
+<p><strong>Subject:</strong> <%= @employee_request.subject %></p>
+<p><strong>Description:</strong> <%= @employee_request.description %></p>
+<% if @employee_request.start_date %>
+  <p><strong>Start date:</strong> <%= @employee_request.start_date %></p>
+<% end %>
+<% if @employee_request.end_date %>
+  <p><strong>End date:</strong> <%= @employee_request.end_date %></p>
+<% end %>
+<% if @employee_request.amount %>
+  <p><strong>Amount:</strong> <%= @employee_request.amount %></p>
+<% end %>
+<% if @employee_request.approver %>
+  <p><strong>Reviewed by:</strong> <%= @employee_request.approver %> on <%= @employee_request.approved_at %></p>
+<% end %>
+
+<p><%= link_to 'Back', employee_requests_path %></p>

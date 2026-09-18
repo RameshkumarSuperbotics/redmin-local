@@ -1,0 +1,36 @@
+<h2><%= EmployeeRequest::REQUEST_TYPE_LABELS[@employee_request.request_type] %></h2>
+
+<%= form_for @employee_request, url: employee_requests_path do |f| %>
+  <%= f.hidden_field :request_type %>
+
+  <p>
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :start_date %><br>
+    <%= f.date_field :start_date %>
+  </p>
+
+  <p>
+    <%= f.label :end_date %><br>
+    <%= f.date_field :end_date %>
+  </p>
+
+  <% if %w[expense_claim advance_request].include?(@employee_request.request_type) %>
+    <p>
+      <%= f.label :amount %><br>
+      <%= f.text_field :amount %>
+    </p>
+  <% end %>
+
+  <p><%= f.submit 'Submit Request' %></p>
+<% end %>
+
+<p><%= link_to 'Back', employee_requests_path %></p>

@@ -1,0 +1,29 @@
+<h2>Pending Approvals</h2>
+
+<table class="list">
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Type</th>
+      <th>Subject</th>
+      <th>Created</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @employee_requests.each do |r| %>
+      <tr>
+        <td><%= r.user %></td>
+        <td><%= link_to r.label, employee_request_path(r) %></td>
+        <td><%= r.subject %></td>
+        <td><%= r.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+        <td>
+          <%= button_to 'Approve', approve_employee_request_path(r), method: :post %>
+          <%= button_to 'Reject', reject_employee_request_path(r), method: :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'Back', employee_requests_path %></p>
