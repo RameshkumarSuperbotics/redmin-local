@@ -14,4 +14,7 @@
   <% if approver?(User.current) %>
     | <%= link_to 'Pending Approvals', approvals_employee_requests_path %>
   <% end %>
+  <% if User.current.admin? %>
+    | <%= link_to 'Add Pay Slip', new_payslip_employee_requests_path %>
+  <% end %>
 </p>

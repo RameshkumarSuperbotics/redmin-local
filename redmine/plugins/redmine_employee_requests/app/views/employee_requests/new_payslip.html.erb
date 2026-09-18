@@ -1,0 +1,27 @@
+<h2>Add Pay Slip</h2>
+
+<%= form_for @employee_request, url: create_payslip_employee_requests_path do |f| %>
+  <p>
+    <%= f.label :user_id, 'Employee' %><br>
+    <%= f.collection_select :user_id, @users, :id, :name %>
+  </p>
+
+  <p>
+    <%= f.label :subject, 'Period' %><br>
+    <%= f.text_field :subject, placeholder: 'e.g. September 2026' %>
+  </p>
+
+  <p>
+    <%= f.label :amount, 'Net Pay' %><br>
+    <%= f.text_field :amount %>
+  </p>
+
+  <p>
+    <%= f.label :description, 'Notes' %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p><%= f.submit 'Add Pay Slip' %></p>
+<% end %>
+
+<p><%= link_to 'Back', employee_requests_path %></p>
